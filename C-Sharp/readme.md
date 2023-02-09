@@ -2,5 +2,6 @@
 
 ### Projetos
 
-* [SalesWebMvc](SalesWebMvc/)
 * [LanchesMac](LanchesMac/)
+* [SalesWebMvc](SalesWebMvc/)
+
