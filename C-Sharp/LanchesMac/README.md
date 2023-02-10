@@ -15,3 +15,4 @@ Plataforma E-commerce para venda de produtos. O curso utiliza como exemplo a ven
 * Entitiy Framework Core
 * Docker Community
 * DBeaver Community
+* Bootstrap versão 5.1.0
