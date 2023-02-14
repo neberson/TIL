@@ -18,8 +18,8 @@ public class Startup
     {
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-        services.AddScoped<ICategoriaRepository, CategoriaRepository>();
-        services.AddScoped<ILanchesRepository, LancheRepository>();
+        services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+        services.AddTransient<ILanchesRepository, LancheRepository>();
 
         services.AddControllersWithViews();
     }
