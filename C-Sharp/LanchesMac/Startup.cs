@@ -1,6 +1,7 @@
 ﻿using LanchesMac.Context;
 using LanchesMac.Repositories;
 using LanchesMac.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac;
@@ -20,8 +21,12 @@ public class Startup
 
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<ILanchesRepository, LancheRepository>();
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         services.AddControllersWithViews();
+
+        services.AddMemoryCache();
+        services.AddSession();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +46,7 @@ public class Startup
         app.UseStaticFiles();
 
         app.UseRouting();
+        app.UseSession();
 
         app.UseAuthorization();
 
