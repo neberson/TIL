@@ -10,5 +10,6 @@ public class AppDbContext : DbContext
     #region "Mapeamento das classes do sistema para tabelas do banco"
     public DbSet<Categoria> Categorias { get; set; }
     public DbSet<Lanche> Lanches { get; set; }
+    public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
     #endregion
 }
