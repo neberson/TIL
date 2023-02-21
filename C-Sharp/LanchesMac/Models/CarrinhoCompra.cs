@@ -87,4 +87,19 @@ public class CarrinhoCompra
                     .ToList()
                 );
     }
+
+    public void LimparCarrinho()
+    {
+        var carrinhoItens = _context.CarrinhoCompraItens
+                            .Where(carrinho => carrinho.CarrinhoCompraId == CarrinhoCompraId);
+        _context.CarrinhoCompraItens.RemoveRange(carrinhoItens);
+        _context.SaveChanges();
+    }
+
+    public decimal ObtemCarrinhoCompraTotal()
+    {
+        return _context.CarrinhoCompraItens
+               .Where(carrinho => carrinho.CarrinhoCompraId == CarrinhoCompraId)
+               .Select(carrinho => carrinho.Lanche.Preco * carrinho.Quantidade).Sum();
+    }
 }
