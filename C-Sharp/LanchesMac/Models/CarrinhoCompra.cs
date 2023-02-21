@@ -1,4 +1,5 @@
 ﻿using LanchesMac.Context;
+using Microsoft.EntityFrameworkCore;
 using System.Net.NetworkInformation;
 
 namespace LanchesMac.Models;
@@ -55,5 +56,35 @@ public class CarrinhoCompra
             carrinhoCompraItem.Quantidade++;
         }
         _context.SaveChanges();
+    }
+
+    public void RemoverDoCarrinho(Lanche lanche)
+    {
+        var carrinhoCompraItem = _context.CarrinhoCompraItens.FirstOrDefault(
+                                          lancheVerifica => lancheVerifica.Lanche.LancheId == lanche.LancheId &&
+                                          lancheVerifica.CarrinhoCompraId == CarrinhoCompraId);
+
+        if (carrinhoCompraItem != null)
+        {
+            if(carrinhoCompraItem.Quantidade > 1)
+            {
+                carrinhoCompraItem.Quantidade--;
+            }else
+            {
+                _context.CarrinhoCompraItens.Remove(carrinhoCompraItem);
+            }
+        }
+        _context.SaveChanges();
+    }
+
+    public List<CarrinhoCompraItem> ObtemCarrinhoCompraIntes()
+    {
+        return CarrinhoCompraItens ??
+                (CarrinhoCompraItens =
+                    _context.CarrinhoCompraItens
+                    .Where(carrinhoItens => carrinhoItens.CarrinhoCompraId == CarrinhoCompraId)
+                    .Include(lanche => lanche.Lanche)
+                    .ToList()
+                );
     }
 }
