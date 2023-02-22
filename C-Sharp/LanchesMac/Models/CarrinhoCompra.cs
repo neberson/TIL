@@ -77,7 +77,7 @@ public class CarrinhoCompra
         _context.SaveChanges();
     }
 
-    public List<CarrinhoCompraItem> ObtemCarrinhoCompraIntes()
+    public List<CarrinhoCompraItem> ObtemCarrinhoCompraItens()
     {
         return CarrinhoCompraItens ??
                 (CarrinhoCompraItens =
