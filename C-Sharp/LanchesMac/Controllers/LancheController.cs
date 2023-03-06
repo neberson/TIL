@@ -22,15 +22,15 @@ public class LancheController : Controller
         //lanchesListViewModel.Lanches = _lancheRepository.Lanches;
         //lanchesListViewModel.CategoriaAtual = "Categoria Atual";
 
-        IEnumerable<Lanche> Lanches;
+        IEnumerable<Lanche> lanches;
         string categoriaAtual = string.Empty;
         if (string.IsNullOrEmpty(categoria))
         {
-            Lanches = _lancheRepository.Lanches.OrderBy(lanche => lanche.LancheId);
+            lanches = _lancheRepository.Lanches.OrderBy(lanche => lanche.LancheId);
             categoriaAtual = "Todos os lanches";
         } else
         {
-            if (string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
+            /*if (string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
             {
                 Lanches = _lancheRepository.Lanches
                     .Where(lanche => lanche.Categoria.CategoriaNome.Equals("Normal"))
@@ -40,13 +40,17 @@ public class LancheController : Controller
                 Lanches = _lancheRepository.Lanches
                     .Where(lanche => lanche.Categoria.CategoriaNome.Equals("Natural"))
                     .OrderBy(lanche => lanche.Nome);
-            }
+            }*/
+            lanches = _lancheRepository.Lanches
+                      .Where(lanche => lanche.Categoria.CategoriaNome.Equals(categoria))
+                      .OrderBy(lanche => lanche.Nome);
+
             categoriaAtual = categoria;
         }
 
         var lanchesListViewModel = new LancheListViewModel
         {
-            Lanches = Lanches,
+            Lanches = lanches,
             CategoriaAtual = categoriaAtual
         };
 
