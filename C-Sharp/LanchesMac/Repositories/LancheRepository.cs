@@ -22,6 +22,6 @@ public class LancheRepository : ILanchesRepository
     {
         return _context.Lanches
                        .Include(lanche => lanche.Categoria)
-                       .FirstOrDefault(lanche => lanche.LancheId == lancheId, new Lanche());
+                       .FirstOrDefault(lanche => lanche.LancheId == lancheId);
     }
 }
