@@ -7,9 +7,9 @@ namespace LanchesMac.Controllers
     public class PedidoController : Controller
     {
         private readonly IPedidoRepository _pedidoRepository;
-        private readonly CarrinhoCompraController _carrinhoCompra;
+        private readonly CarrinhoCompra _carrinhoCompra;
 
-        public PedidoController(IPedidoRepository pedidoRepository, CarrinhoCompraController carrinhoCompra)
+        public PedidoController(IPedidoRepository pedidoRepository, CarrinhoCompra carrinhoCompra)
         {
             _pedidoRepository = pedidoRepository;
             _carrinhoCompra = carrinhoCompra;
@@ -22,7 +22,7 @@ namespace LanchesMac.Controllers
         }
 
         [HttpPost]
-        public IActionResult Chechout(Pedido pedido) 
+        public IActionResult Checkout(Pedido pedido) 
         {
             return View();
         }
