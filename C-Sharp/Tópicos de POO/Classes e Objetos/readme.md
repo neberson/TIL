@@ -90,5 +90,5 @@ Exemplo simples utilizando uma conta bancária:
 Referências
 -----
 <p>Udemy Macoratti:  https://www.udemy.com/course/c-aplicando-principios-solid-na-pratica/learn/lecture/19240554#overview</p>
-<p>youtube Fredi: Fredi https://www.youtube.com/watch?v=0-gG7jWC7_U</p>
-<p>Livro: C# PARA INICIANTES desenvolvendo seu primeiro progama</p>
+<p>youtube Fredi: https://www.youtube.com/watch?v=0-gG7jWC7_U</p>
+<p>Livro: André Carlucci, Carlos dos Santos, Claudenir C.Andrade, Rafael Almeida Santos. C# PARA INICIANTES desenvolvendo seu primeiro progama. 2021 Versão Digital</p>
