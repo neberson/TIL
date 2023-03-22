@@ -91,6 +91,6 @@ Exemplo simples utilizando uma conta bancária:
 
 Referências
 -----
-Udemy Macoratti:  (https://www.udemy.com/course/c-aplicando-principios-solid-na-pratica/learn/lecture/19240554#overview)
-youtube Fredi: Fredi (https://www.youtube.com/watch?v=0-gG7jWC7_U)
-Livro: C# PARA INICIANTES desenvolvendo seu primeiro progama
+<p>Udemy Macoratti:  (https://www.udemy.com/course/c-aplicando-principios-solid-na-pratica/learn/lecture/19240554#overview)</p>
+<p>youtube Fredi: Fredi (https://www.youtube.com/watch?v=0-gG7jWC7_U</p>
+<p>Livro: C# PARA INICIANTES desenvolvendo seu primeiro progama</p>
