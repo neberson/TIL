@@ -14,8 +14,7 @@ Para definir uma classe em c# utlizamos a palavra reservada "class" e em seguida
 
 - Exemplo de uma classe Pessoa:
 
-  .. code:: csharp
-  
+  ```csharp
     class Pessoa
     {
         //definição dos campos/atributos da classe
