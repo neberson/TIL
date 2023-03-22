@@ -20,6 +20,12 @@
             pessoa2.nome = "José";
             Console.WriteLine(pessoa2.nome);*/
             /*Todo objeto é instanciado como um tipo por referência, então cada objeto aponta para um local na mémoria e terá seus próprios valores.*/
+
+            /*Exemplo de objeto de uma conta de usuário*/
+            ContaBancaria conta = new ContaBancaria();
+            conta.NomeDoTitular = "João Figo";
+            conta.Depositar(100);
+            conta.MostrarDetalhes();
         }
     }
 }
