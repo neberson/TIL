@@ -30,7 +30,7 @@ Para definir uma classe em c# utlizamos a palavra reservada "class" e em seguida
     }
 ```
 
-Após criar a classe podemos instanciar na memória do computador o objeto contendo os atributos e comportamentos da classe. Para instanciar o objeto em c# devemos especificar o tipo do objeto, definir um nome para o objeto, seguido do sinal de atribuição "=" e da palavra reservada "new", após o new utiliza-se o nome da classe novamente seguido de parenteses. A sintaxe ficaria assim: <NomeDaClasse> <NomeDoObjeto> = new <NomeDaClasse>(). Nas novas versões do c# é possível criar a instância sem a redundância do nome da classe, utilizando a sintaxe: <NomeDaClasse> <NomeDoObjeto> = new().
+Após criar a classe podemos instanciar na memória do computador o objeto contendo os atributos e comportamentos da classe. Para instanciar o objeto em c# devemos especificar o tipo do objeto, definir um nome para o objeto, seguido do sinal de atribuição "=" e da palavra reservada "new", após o new utiliza-se o nome da classe novamente seguido de parenteses. A sintaxe ficaria assim: NomeDaClasse NomeDoObjeto = new NomeDaClasse(). Nas novas versões do c# é possível criar a instância sem a redundância do nome da classe, utilizando a sintaxe: NomeDaClasse NomeDoObjeto = new().
 
 
 - Exemplo de instancia da classe Pessoa:
