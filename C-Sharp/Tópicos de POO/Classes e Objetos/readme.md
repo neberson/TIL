@@ -4,8 +4,6 @@ Classes na orientação a objetos é uma forma de abstração de objetos do mund
 
 Objetos são tipos de referência da memória do computador, onde está contido os dados da classe, para interpretação e execução. Seguindo o exemplo a cima, após a criação do molde, podemos utiliza-lo para criar vários objetos "reais" que têm as mesmas características e comportamentos. É como fazer um bolo usando uma receita: a receita é a classe e o bolo é um objeto criado a partir dela. O ato de criação de objetos denominamos "instância da classe".
 
-Como exemplo de classe na programação, podemos ter uma classe chamada "Pessoa" e nela definir atributos como Nome, CPF, Data de Nascimento, etc. Após definir os atríbutos da pessoa podemos definir os comportamentos, que podem ser andar, correr, saltar, etc.
-
 Uso
 -----
 Conforme mencionado podemos utilizar a classe para definir um objeto do mundo real, como exemplo podemos ter uma classe chamada "Pessoa" e nela definir atributos como Nome, CPF, Data de Nascimento, etc. Após definir os atributos da pessoa podemos definir os comportamentos, que poderiam ser andar, correr, saltar, etc.
