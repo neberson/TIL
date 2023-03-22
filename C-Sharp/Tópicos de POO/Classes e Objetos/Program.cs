@@ -6,7 +6,7 @@
         {
             /* Para criar o objeto de uma classe deve-se especificar o tipo da classe, o nome do objeto que deseja criar,
              * seguido de igualdade e da palavra reservada "new", após o new utiliza-se o nome da classe novamente seguido de parenteses. Exemplo:
-             * <NomeDaClasse> NomeDoObjeto = new NomeDaClasse();*/
+             * <NomeDaClasse> NomeDoObjeto = new <NomeDaClasse>();*/
             Pessoa pessoa1 = new Pessoa();
 
             /* Após criar o objeto é possível atribuir valor ao atríbutos e acessa-los, para por exemplo realizar uma impressão do valor.*/
