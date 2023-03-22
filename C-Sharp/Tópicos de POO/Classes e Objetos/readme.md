@@ -28,7 +28,7 @@ Para definir uma classe em c# utlizamos a palavra reservada "class" e em seguida
             System.Console.WriteLine($"Olá, sou o {nome} tenho {idade} e sou do sexo {genero}");
         } 
     }
-    
+```   
 Após criar a classe podemos instanciar na memória do computador o objeto contendo os atributos e comportamentos da classe. Para instanciar o objeto em c# devemos especificar o tipo do objeto, definir um nome para o objeto, seguido do sinal de atribuição "=" e da palavra reservada "new", após o new utiliza-se o nome da classe novamente seguido de parenteses. A sintaxe ficaria assim: NomeDaClasse NomeDoObjeto = new NomeDaClasse();. Nas novas versões do c# é possível criar a instância sem a redundância do nome da classe, utilizando a sintaxe: NomeDaClasse NomeDoObjeto = new();
 
 
@@ -36,7 +36,7 @@ Após criar a classe podemos instanciar na memória do computador o objeto conte
 
  ```csharp
      Pessoa pessoa1 = new Pessoa();
-
+```
 - Após a instanciar o objeto, podemos acessar o seus atríbutos e definir os valores de cada atributo. No exemplo abaixo acessamos os atríbutos do objeto "pessoa1"  e definimos os valores para nome, idade e genero. 
 
 - Exemplo de acesso aos atríbutos da classe:  
@@ -45,14 +45,14 @@ Após criar a classe podemos instanciar na memória do computador o objeto conte
      pessoa1.nome = "Paulo";
      pessoa1.idade = 45;
      pessoa1.genero = "Masculino";
-
+```     
 - Podemos também acessar os comportamentos do objeto, no exemplo abaixo acessamos o comportamento Identificar para imprimir os dados da pessoa na tela:
 
- ```csharp
+```csharp
      pessoa1.nome = "Paulo";
      pessoa1.idade = 45;
      pessoa1.genero = "Masculino";
-
+```
 Exemplo simples utilizando uma conta bancária:
 --------
 
@@ -74,15 +74,15 @@ Exemplo simples utilizando uma conta bancária:
             Console.WriteLine($"{NomeDoTitular} possui um saldo de {Saldo:C2}");
         }
     }
-
+```
 - Instância de um objeto do tipo ContaBancaria, atribuição de valores no objeto e utilização dos comportamentos do objeto:
 
- ```csharp
+```csharp
       ContaBancaria conta = new ContaBancaria();
       conta.NomeDoTitular = "João Figo";
       conta.Depositar(100);
       conta.MostrarDetalhes();
-
+```
 Referências
 -----
 Udemy Macoratti:  (https://www.udemy.com/course/c-aplicando-principios-solid-na-pratica/learn/lecture/19240554#overview)
