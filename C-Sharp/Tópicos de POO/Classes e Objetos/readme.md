@@ -12,10 +12,10 @@ Conforme mencionado podemos utilizar a classe para definir um objeto do mundo re
 
 Para definir uma classe em c# utlizamos a palavra reservada "class" e em seguida o nome do objeto que queremos abstrair, entre chaves "{}" deverá ser inserido todos os atríbutos e comportamentos da classe.
 
-Exemplo de uma classe Pessoa:
+- Exemplo de uma classe Pessoa:
 
   .. code:: csharp
-
+  
     class Pessoa
     {
         //definição dos campos/atributos da classe
@@ -29,23 +29,26 @@ Exemplo de uma classe Pessoa:
             System.Console.WriteLine($"Olá, sou o {nome} tenho {idade} e sou do sexo {genero}");
         } 
     }
-
+    
 Após criar a classe podemos instanciar na memória do computador o objeto contendo os atributos e comportamentos da classe. Para instanciar o objeto em c# devemos especificar o tipo do objeto, definir um nome para o objeto, seguido do sinal de atribuição "=" e da palavra reservada "new", após o new utiliza-se o nome da classe novamente seguido de parenteses. A sintaxe ficaria assim: NomeDaClasse NomeDoObjeto = new NomeDaClasse();. Nas novas versões do c# é possível criar a instância sem a redundância do nome da classe, utilizando a sintaxe: NomeDaClasse NomeDoObjeto = new();
 
 
-Exemplo de instancia da classe Pessoa:  
+Exemplo de instancia da classe Pessoa:
+
   .. code:: csharp
      Pessoa pessoa1 = new Pessoa();
 
 Após a instanciar o objeto, podemos acessar o seus atríbutos e definir os valores de cada atributo. No exemplo abaixo acessamos os atríbutos do objeto "pessoa1"  e definimos os valores para nome, idade e genero. 
 
 Exemplo de acesso aos atríbutos da classe:  
+
   .. code:: csharp
      pessoa1.nome = "Paulo";
      pessoa1.idade = 45;
      pessoa1.genero = "Masculino";
 
 Podemos também acessar os comportamentos do objeto, no exemplo abaixo acessamos o comportamento Identificar para imprimir os dados da pessoa na tela:
+
   .. code:: csharp
      pessoa1.nome = "Paulo";
      pessoa1.idade = 45;
@@ -55,6 +58,7 @@ Exemplo simples utilizando uma conta bancária:
 --------
 
 Criação e definição da classe, com atríbutos e comportamentos:
+
   .. code:: csharp
     class ContaBancaria
     {
@@ -73,6 +77,7 @@ Criação e definição da classe, com atríbutos e comportamentos:
     }
 
 Instância de um objeto do tipo ContaBancaria, atribuição de valores no objeto e utilização dos comportamentos do objeto:
+
    .. code:: csharp
       ContaBancaria conta = new ContaBancaria();
       conta.NomeDoTitular = "João Figo";
