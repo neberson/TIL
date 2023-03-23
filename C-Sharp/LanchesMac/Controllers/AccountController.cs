@@ -55,7 +55,7 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(LoginViewModel loginViewModel)
     {
-        if (!ModelState.IsValid)
+        if (ModelState.IsValid)
         {
             var user = new IdentityUser { UserName = loginViewModel.UserName };
             var result = await _userManager.CreateAsync(user, loginViewModel.Password);
