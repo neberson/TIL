@@ -24,6 +24,16 @@ public class Startup
         services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+        services.Configure<IdentityOptions>(options =>
+        {
+            //Default Password settings.
+            options.Password.RequireDigit = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireNonAlphanumeric = true;
+            options.Password.RequireUppercase = true;
+            options.Password.RequiredLength = 8;
+            options.Password.RequiredUniqueChars = 1;
+        });
 
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<ILanchesRepository, LancheRepository>();
