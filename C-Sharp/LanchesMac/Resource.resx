@@ -165,8 +165,14 @@
   <data name="DESCRITIVO_PEDIDO_PLURAL" xml:space="preserve">
     <value>Pedidos</value>
   </data>
+  <data name="DESCRITIVO_PROCURAR" xml:space="preserve">
+    <value>Procurar</value>
+  </data>
   <data name="DESCRITIVO_SALVAR" xml:space="preserve">
     <value>Salvar</value>
+  </data>
+  <data name="DESCRITIVO_TOTAL_PEDIDOS" xml:space="preserve">
+    <value>Total de Pedidos</value>
   </data>
   <data name="DESCRITVO_VOLTAR_LISTA" xml:space="preserve">
     <value>Voltar para Lista</value>

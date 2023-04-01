@@ -1,6 +1,7 @@
 ﻿using LanchesMac.Context;
 using LanchesMac.Models;
 using LanchesMac.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac.Repositories;
 public class PedidoRepository : IPedidoRepository
@@ -35,5 +36,38 @@ public class PedidoRepository : IPedidoRepository
             _appDbContext.PedidoDetalhes.Add(pedidoDetail);
         }
         _appDbContext.SaveChanges();
+    }
+
+    public async Task<IEnumerable<Pedido>> ObtemPedidosRange(string filter, int skip, int take)
+    {
+        var pedidos = await _appDbContext.Pedidos
+                                         .Where(p => p.Nome.Contains(filter))
+                                         .OrderBy(p => p.Nome)
+                                         .AsNoTracking()
+                                         .Skip(skip)
+                                         .Take(take)
+                                         .ToListAsync();
+        return pedidos;
+    }
+
+    public async Task<IEnumerable<Pedido>> ObtemPedidosRange(int skip, int take)
+    {
+        var pedidos = await _appDbContext.Pedidos
+                                         .OrderBy(p => p.Nome)
+                                         .AsNoTracking()
+                                         .Skip(skip)
+                                         .Take(take)
+                                         .ToListAsync();
+        return pedidos;
+    }
+
+    public async Task<int> ObtemQuantidadePedidos()
+    {
+        return await _appDbContext.Pedidos.CountAsync();
+    }
+
+    public async Task<int> ObtemQuantidadePedidos(string filter)
+    {
+        return await _appDbContext.Pedidos.Where(pedido => pedido.Nome.Contains(filter)).CountAsync();
     }
 }

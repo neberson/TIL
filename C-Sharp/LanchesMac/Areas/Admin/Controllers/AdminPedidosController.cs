@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using LanchesMac.Context;
 using LanchesMac.Models;
 using Microsoft.AspNetCore.Authorization;
+using LanchesMac.Repositories;
+using LanchesMac.Areas.Admin.ViewModel;
+using LanchesMac.Repositories.Interfaces;
 
 namespace LanchesMac.Areas.Admin.Controllers
 {
@@ -16,18 +19,42 @@ namespace LanchesMac.Areas.Admin.Controllers
     public class AdminPedidosController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IPedidoRepository _pedidoRepository;
 
-        public AdminPedidosController(AppDbContext context)
+        public AdminPedidosController(AppDbContext context, IPedidoRepository pedidoRepository)
         {
             _context = context;
+            _pedidoRepository = pedidoRepository;
         }
 
         // GET: Admin/AdminPedidos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string filter, int pageindex = 1, int pageSize = 5)
         {
-              return _context.Pedidos != null ? 
-                          View(await _context.Pedidos.ToListAsync()) :
-                          Problem("Entity set 'AppDbContext.Pedidos'  is null.");
+            IEnumerable<Pedido> pedidos;
+            int pedidosCadastrados;
+
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                pedidos = await _pedidoRepository.ObtemPedidosRange(filter, ((pageindex-1) * pageSize), pageSize);
+                pedidosCadastrados = await _pedidoRepository.ObtemQuantidadePedidos(filter);
+                ViewBag.filter = filter;
+            }
+            else 
+            {
+                pedidos = await _pedidoRepository.ObtemPedidosRange(((pageindex - 1) * pageSize), pageSize);
+                pedidosCadastrados = await _pedidoRepository.ObtemQuantidadePedidos();
+            }
+
+            var paginacaoPedidosViewModel = new PaginacaoPedidosViewModel()
+            {
+                Pedidos = pedidos,
+                Pedido = pedidos.FirstOrDefault(),
+                PageNumber = pageindex,
+                PageSize = pageSize,
+                QuantidadePedidos = pedidosCadastrados
+            };
+
+            return View(paginacaoPedidosViewModel);
         }
 
         // GET: Admin/AdminPedidos/Details/5

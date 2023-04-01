@@ -1,10 +1,36 @@
-﻿@model IEnumerable<LanchesMac.Models.Pedido>
+﻿@model PaginacaoPedidosViewModel
 
 @{
-    ViewData["Title"] = @Resource.DESCRITIVO_PEDIDO_PLURAL;
+    ViewData["Title"] = Resource.DESCRITIVO_PEDIDO_PLURAL;
 }
 
 <h1>@Resource.DESCRITIVO_PEDIDO_PLURAL</h1>
+
+<form method="get" class="form-inline">
+
+    <input name="filter" class="form-control" placeholder="filtro"
+           value="@ViewBag.filter" />
+
+    <button type="submit" class="btn btn-primary">Procurar</button>
+</form>
+
+Total de Pedidos : @Model.QuantidadePedidos
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+
+            <li class="@((Model.PageNumber > 1)? "page-item" : "page-item disabled")"><a class="page-link" href="@Url.Action("Index", new { filter = ViewBag.filter, pageindex = Model.PageNumber - 1 })"> Anterior </a></li>  
+
+            @for(int contador = 1; contador <= Model.TotalPages; contador++)
+            {
+                    <li class="@((contador == Model.PageNumber)? "page-item active" : "page-item")"><a class="page-link" href="@Url.Action("Index", new { filter = ViewBag.filter, pageindex = contador })">@contador</a></li> 
+            }
+
+           <li class="@((Model.PageNumber < Model.TotalPages)? "page-item" : "page-item disabled")"><a class="page-link" href="@Url.Action("Index", new { filter = ViewBag.filter, pageindex = Model.PageNumber + 1 })">Próxima</a></li>  
+
+        </ul>
+    </nav>
+</div>
 
 <p>
     <a asp-action="Create">@Resource.DESCRITIVO_CRIAR_NOVO</a>
@@ -13,43 +39,43 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.Pedido.Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sobrenome)
+                @Html.DisplayNameFor(model => model.Pedido.Sobrenome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Endereco1)
+                @Html.DisplayNameFor(model => model.Pedido.Endereco1)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Endereco2)
+                @Html.DisplayNameFor(model => model.Pedido.Endereco2)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cep)
+                @Html.DisplayNameFor(model => model.Pedido.Cep)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Estado)
+                @Html.DisplayNameFor(model => model.Pedido.Estado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cidade)
+                @Html.DisplayNameFor(model => model.Pedido.Cidade)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefone)
+                @Html.DisplayNameFor(model => model.Pedido.Telefone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Pedido.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PedidoEnviado)
+                @Html.DisplayNameFor(model => model.Pedido.PedidoEnviado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PedidoEntregueEm)
+                @Html.DisplayNameFor(model => model.Pedido.PedidoEntregueEm)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Pedidos)
         {
             <tr>
                 <td>

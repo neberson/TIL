@@ -205,11 +205,29 @@ namespace LanchesMac {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procurar.
+        /// </summary>
+        public static string DESCRITIVO_PROCURAR {
+            get {
+                return ResourceManager.GetString("DESCRITIVO_PROCURAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Salvar.
         /// </summary>
         public static string DESCRITIVO_SALVAR {
             get {
                 return ResourceManager.GetString("DESCRITIVO_SALVAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total de Pedidos.
+        /// </summary>
+        public static string DESCRITIVO_TOTAL_PEDIDOS {
+            get {
+                return ResourceManager.GetString("DESCRITIVO_TOTAL_PEDIDOS", resourceCulture);
             }
         }
         
