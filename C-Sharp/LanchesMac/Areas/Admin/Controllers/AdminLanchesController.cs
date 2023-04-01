@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using LanchesMac.Context;
 using LanchesMac.Models;
 using Microsoft.AspNetCore.Authorization;
+using LanchesMac.Repositories.Interfaces;
+using LanchesMac.Areas.Admin.ViewModel;
+using LanchesMac.Repositories;
 
 namespace LanchesMac.Areas.Admin.Controllers
 {
@@ -16,17 +19,41 @@ namespace LanchesMac.Areas.Admin.Controllers
     public class AdminLanchesController : Controller
     {
         private readonly AppDbContext _context;
-
-        public AdminLanchesController(AppDbContext context)
+        private readonly ILanchesRepository _lanchesRepository;
+        public AdminLanchesController(AppDbContext context, ILanchesRepository lanchesRepository)
         {
             _context = context;
+            _lanchesRepository = lanchesRepository;
         }
 
         // GET: Admin/AdminLanches
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string filter, int pageindex = 1, int pageSize = 5)
         {
-            var appDbContext = _context.Lanches.Include(l => l.Categoria);
-            return View(await appDbContext.ToListAsync());
+            IEnumerable<Lanche> lanches;
+            int lanchesCadastrados;
+
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                lanches = await _lanchesRepository.ObtemLanchesRange(filter, ((pageindex - 1) * pageSize), pageSize);
+                lanchesCadastrados = await _lanchesRepository.ObtemQuantidadeLanches(filter);
+                ViewBag.filter = filter;
+            }
+            else
+            {
+                lanches = await _lanchesRepository.ObtemLanchesRange(((pageindex - 1) * pageSize), pageSize);
+                lanchesCadastrados = await _lanchesRepository.ObtemQuantidadeLanches();
+            }
+
+            var paginacaoPedidosViewModel = new PaginacaoLanchesViewModel()
+            {
+                Lanches = lanches,
+                Lanche = lanches.FirstOrDefault(),
+                PageNumber = pageindex,
+                PageSize = pageSize,
+                QuantidadeRegistros = lanchesCadastrados
+            };
+
+            return View(paginacaoPedidosViewModel);
         }
 
         // GET: Admin/AdminLanches/Details/5

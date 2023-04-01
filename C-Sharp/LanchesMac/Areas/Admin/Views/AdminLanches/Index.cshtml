@@ -1,10 +1,36 @@
-﻿@model IEnumerable<LanchesMac.Models.Lanche>
+﻿@model PaginacaoLanchesViewModel
 
 @{
     ViewData["Title"] = Resource.DESCRITIVO_LANCHE_PLURAL;
 }
 
 <h1>@Resource.DESCRITIVO_LANCHE_PLURAL</h1>
+
+<form method="get" class="form-inline">
+
+    <input name="filter" class="form-control" placeholder="filtro"
+           value="@ViewBag.filter" />
+
+    <button type="submit" class="btn btn-primary">Procurar</button>
+</form>
+
+Total de Pedidos : @Model.QuantidadeRegistros
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+
+            <li class="@((Model.PageNumber > 1)? "page-item" : "page-item disabled")"><a class="page-link" href="@Url.Action("Index", new { filter = ViewBag.filter, pageindex = Model.PageNumber - 1 })"> Anterior </a></li>
+
+            @for (int contador = 1; contador <= Model.TotalPages; contador++)
+            {
+                <li class="@((contador == Model.PageNumber)? "page-item active" : "page-item")"><a class="page-link" href="@Url.Action("Index", new { filter = ViewBag.filter, pageindex = contador })">@contador</a></li>
+            }
+
+            <li class="@((Model.PageNumber < Model.TotalPages)? "page-item" : "page-item disabled")"><a class="page-link" href="@Url.Action("Index", new { filter = ViewBag.filter, pageindex = Model.PageNumber + 1 })">Próxima</a></li>
+
+        </ul>
+    </nav>
+</div>
 
 <p>
     <a asp-action="Create">@Resource.DESCRITIVO_CRIAR_NOVO</a>
@@ -13,37 +39,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.Lanche.Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DescricaoCurta)
+                @Html.DisplayNameFor(model => model.Lanche.DescricaoCurta)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DescricaoDetalhada)
+                @Html.DisplayNameFor(model => model.Lanche.DescricaoDetalhada)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Preco)
+                @Html.DisplayNameFor(model => model.Lanche.Preco)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImagemUrl)
+                @Html.DisplayNameFor(model => model.Lanche.ImagemUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImagemThumbnailUrl)
+                @Html.DisplayNameFor(model => model.Lanche.ImagemThumbnailUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsLanchePreferido)
+                @Html.DisplayNameFor(model => model.Lanche.IsLanchePreferido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmEstoque)
+                @Html.DisplayNameFor(model => model.Lanche.EmEstoque)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Categoria)
+                @Html.DisplayNameFor(model => model.Lanche.Categoria)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Lanches) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)

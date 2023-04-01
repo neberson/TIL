@@ -51,7 +51,7 @@ namespace LanchesMac.Areas.Admin.Controllers
                 Pedido = pedidos.FirstOrDefault(),
                 PageNumber = pageindex,
                 PageSize = pageSize,
-                QuantidadePedidos = pedidosCadastrados
+                QuantidadeRegistros = pedidosCadastrados
             };
 
             return View(paginacaoPedidosViewModel);
