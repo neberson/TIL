@@ -168,6 +168,9 @@
   <data name="DESCRITIVO_PROCURAR" xml:space="preserve">
     <value>Procurar</value>
   </data>
+  <data name="DESCRITIVO_RETORNAR" xml:space="preserve">
+    <value>Retornar</value>
+  </data>
   <data name="DESCRITIVO_SALVAR" xml:space="preserve">
     <value>Salvar</value>
   </data>

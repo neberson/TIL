@@ -47,6 +47,7 @@ namespace LanchesMac.Models
         #endregion
 
         #region "Relacionamento com a tabela categorias"
+        [Display(Name = "Categoria")]
         public int CategoriaId { get; set; }
         public virtual Categoria? Categoria { get; set; }
         #endregion

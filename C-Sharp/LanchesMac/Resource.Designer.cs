@@ -214,6 +214,15 @@ namespace LanchesMac {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retornar.
+        /// </summary>
+        public static string DESCRITIVO_RETORNAR {
+            get {
+                return ResourceManager.GetString("DESCRITIVO_RETORNAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Salvar.
         /// </summary>
         public static string DESCRITIVO_SALVAR {
