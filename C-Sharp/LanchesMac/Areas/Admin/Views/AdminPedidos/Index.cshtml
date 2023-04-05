@@ -114,7 +114,8 @@ Total de Pedidos : @Model.QuantidadeRegistros
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.PedidoId">@Resource.DESCRITIVO_EDITAR</a> |
                     <a asp-action="Details" asp-route-id="@item.PedidoId">@Resource.DESCRITIVO_DETALHES</a> |
-                    <a asp-action="Delete" asp-route-id="@item.PedidoId">@Resource.DESCRITIVO_DELETAR</a>
+                    <a asp-action="Delete" asp-route-id="@item.PedidoId">@Resource.DESCRITIVO_DELETAR</a> |
+                    <a asp-action="PedidoLanches" asp-route-id="@item.PedidoId">Ver Lanches</a>
                 </td>
             </tr>
         }

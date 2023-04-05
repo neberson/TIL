@@ -27,6 +27,28 @@ namespace LanchesMac.Areas.Admin.Controllers
             _pedidoRepository = pedidoRepository;
         }
 
+        public IActionResult PedidoLanches(int? id)
+        {
+            var pedido = _context.Pedidos
+                                 .Include(pd => pd.PedidoItens)
+                                 .ThenInclude(l => l.Lanche)
+                                 .FirstOrDefault(p => p.PedidoId == id);
+
+            if (pedido == null)
+            {
+                Response.StatusCode = 404;
+                return View("PedidoNotFound", id.Value);
+            }
+
+            PedidoLancheViewModel pedidoLanches = new PedidoLancheViewModel()
+            {
+                Pedido = pedido,
+                PedidoDetalhes = pedido.PedidoItens
+            };
+
+            return View(pedidoLanches);
+        }
+
         // GET: Admin/AdminPedidos
         public async Task<IActionResult> Index(string filter, int pageindex = 1, int pageSize = 5)
         {
