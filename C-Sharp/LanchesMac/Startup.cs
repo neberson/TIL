@@ -26,6 +26,7 @@ public class Startup
         services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+
         services.Configure<IdentityOptions>(options =>
         {
             //Default Password settings.
@@ -36,6 +37,8 @@ public class Startup
             options.Password.RequiredLength = 8;
             options.Password.RequiredUniqueChars = 1;
         });
+
+        services.Configure<ConfigurationImagens>(Configuration.GetSection("ConfigurationPastaImagens"));
 
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<ILanchesRepository, LancheRepository>();
