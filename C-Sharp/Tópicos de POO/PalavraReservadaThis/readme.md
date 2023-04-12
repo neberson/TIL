@@ -57,7 +57,7 @@ A palavra "this" pode ser utilizada também para referenciar métodos da classe.
 
 Observe que a utilização da palavra "this" para chamar o construtor base na sobrecarga de construtor permite que tenhamos uma forma mais prática de inicializar as variáveis de instância da classe.
 
-<h3>Importante:</h3> a palavra "this" deve ser utilizada com moderação para evitar uma sintaxe excessivamente complexa. Em alguns casos, o uso excessivo de "this" pode tornar o código confuso e difícil de ler. Portanto, é importante avaliar se é realmente necessário utilizá-la em determinado trecho do código.
+<h3>Importante:</h3> A palavra "this" deve ser utilizada com moderação para evitar uma sintaxe excessivamente complexa. Em alguns casos, o uso excessivo de "this" pode tornar o código confuso e difícil de ler. Portanto, é importante avaliar se é realmente necessário utilizá-la em determinado trecho do código.
 
 
 Referências
