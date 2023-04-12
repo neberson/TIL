@@ -2,7 +2,7 @@ Palavra Reservada "this"
 ==========
 A palavra reservada "this" é utilizada em C# para referenciar a instância atual de um objeto. Ela é uma forma de se referir ao próprio objeto e é usada em uma classe para se referir aos seus próprios membros.
 
-A palavra "this" é útil quando precisamos distinguir variáveis de classe de variáveis de instância. Quando temos uma variável de escopo com o mesmo nome de uma variável de instância, o compilador C# não sabe a qual delas estamos nos referindo. Para resolver esse problema, utilizamos a palavra "this" para nos referirmos à variável de instância.
+A palavra "this" é útil quando precisamos distinguir variáveis de classe de variáveis de instância. Quando temos uma variável de classe com o mesmo nome de uma variável de instância, o compilador C# não sabe a qual delas estamos nos referindo. Para resolver esse problema, utilizamos a palavra "this" para nos referirmos à variável de instância.
 
 Uso
 -----
