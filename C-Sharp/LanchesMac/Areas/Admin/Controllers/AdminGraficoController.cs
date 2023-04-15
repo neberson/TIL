@@ -1,9 +1,12 @@
 ﻿using LanchesMac.Areas.Admin.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol;
 
 namespace LanchesMac.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize("Admin")]
     public class AdminGraficoController : Controller
     {
         private readonly GraficoVendasServico _graficoVendasServico;
@@ -22,19 +25,19 @@ namespace LanchesMac.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(int dias)
+        public IActionResult Index()
         {
             return View();
         }        
         
         [HttpGet]
-        public IActionResult VendasMensal(int dias)
+        public IActionResult VendasMensal()
         {
             return View();
         }        
         
         [HttpGet]
-        public IActionResult VendasSemanal(int dias)
+        public IActionResult VendasSemanal()
         {
             return View();
         }
