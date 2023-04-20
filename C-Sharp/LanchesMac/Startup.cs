@@ -1,4 +1,5 @@
-﻿using LanchesMac.Areas.Admin.Services;
+﻿using FastReport.Data;
+using LanchesMac.Areas.Admin.Services;
 using LanchesMac.Context;
 using LanchesMac.Models;
 using LanchesMac.Repositories;
@@ -23,6 +24,8 @@ public class Startup
     {
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+        FastReport.Utils.RegisteredObjects.AddConnection(typeof(MsSqlDataConnection));
+
         services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
@@ -46,6 +49,7 @@ public class Startup
         services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
         services.AddScoped<RelatorioVendasService>();
         services.AddScoped<GraficoVendasServico>();
+        services.AddScoped<RelatorioLanchesService>();
 
         services.AddAuthorization(options => 
         {
@@ -80,6 +84,8 @@ public class Startup
         }
         app.UseHttpsRedirection();
         app.UseStaticFiles();
+
+        app.UseFastReport();
 
         seedUserRoleInitial.SeedRoles();
         seedUserRoleInitial.SeedUsers();
