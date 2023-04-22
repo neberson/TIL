@@ -32,9 +32,13 @@ Total de Pedidos : @Model.QuantidadeRegistros
     </nav>
 </div>
 
-<p>
-    <a asp-action="Create">@Resource.DESCRITIVO_CRIAR_NOVO</a>
-</p>
+<div class="row">
+    <p>
+        <a asp-action="Create">@Resource.DESCRITIVO_CRIAR_NOVO</a> |
+        <a asp-controller="AdminLanchesReport" asp-action="LanchesCategoriaReport">Gerar Relatório</a>
+    </p>
+</div>
+
 <table class="table">
     <thead>
         <tr>
