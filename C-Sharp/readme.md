@@ -8,3 +8,4 @@
 * [LanchesMac](LanchesMac/)
 * [SalesWebMvc](SalesWebMvc/)
 * [APICatalogo](APICatalogo/)
+* [APITarefas](ApiTarefas/)
