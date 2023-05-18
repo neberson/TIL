@@ -9,3 +9,4 @@
 * [SalesWebMvc](SalesWebMvc/)
 * [APICatalogo](APICatalogo/)
 * [APITarefas](ApiTarefas/)
+* [ApiTarefasComDapper](ApiTarefasComDapper/)
