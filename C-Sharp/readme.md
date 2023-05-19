@@ -8,5 +8,6 @@
 * [LanchesMac](LanchesMac/)
 * [SalesWebMvc](SalesWebMvc/)
 * [APICatalogo](APICatalogo/)
+* [MinimalAPICatalogo](MinimalAPICatalogo/)
 * [APITarefas](ApiTarefas/)
 * [ApiTarefasComDapper](ApiTarefasComDapper/)
