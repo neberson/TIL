@@ -29,9 +29,9 @@ namespace MinimalAPICatalogo.Models
         public DateTime DataCompra { get; set; }
         public int Estoque { get; set; }
 
-        [ForeignKey("CategoriaId")]   
+        [ForeignKey("CategoriaId")]
         public int CategoriaId { get; set; }
-
+        [JsonIgnore]
         public Categoria? Categoria { get; set; }
     }
 }
