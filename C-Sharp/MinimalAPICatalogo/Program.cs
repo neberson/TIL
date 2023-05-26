@@ -1,6 +1,11 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MinimalAPICatalogo.Context;
 using MinimalAPICatalogo.Models;
+using MinimalAPICatalogo.Services;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +18,51 @@ var mysqlConnection = builder.Configuration.GetConnectionString("DefaultConnecti
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(mysqlConnection, ServerVersion.AutoDetect(mysqlConnection)));
 
+builder.Services.AddSingleton<ITokenService>(new TokenService());
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                ValidAudience = builder.Configuration["Jwt:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey
+                (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            };
+        });
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
+
+//endpoint para login
+app.MapPost("/login", [AllowAnonymous](UserModel userModel, ITokenService tokenService) =>
+{
+    if (userModel == null)
+    {
+        return Results.BadRequest("Login Inválido");
+    }
+    if (userModel.UserName == "teste" && userModel.Password == "123")
+    {
+        var tokenString = tokenService.GerarToken(app.Configuration["Jwt:Key"],
+            app.Configuration["Jwt:Issuer"],
+            app.Configuration["Jwt:Audience"],
+            userModel);
+        return Results.Ok(new { token = tokenString });
+    }
+    else
+    {
+        return Results.BadRequest("Login Inválido");
+    }
+}).Produces(StatusCodes.Status400BadRequest)
+           .Produces(StatusCodes.Status200OK)
+           .WithName("Login")
+           .WithTags("Autenticacao");
 
 //Definição dos endpoints
 
@@ -64,7 +113,7 @@ app.MapDelete("/categorias/{id:int}", async (int id, AppDbContext context) => {
 
 app.MapGet("/produtos", async (AppDbContext context) => {
     return await context.Produtos.ToListAsync();
-});
+}).RequireAuthorization();
 
 app.MapGet("/produtos/{id:int}", async (int id, AppDbContext context) => 
 {
@@ -120,5 +169,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
