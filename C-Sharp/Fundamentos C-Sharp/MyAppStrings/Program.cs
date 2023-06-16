@@ -11,7 +11,8 @@ namespace MyAppStrings
             //CompracaoDeTextos();
             //VerificaInicioString();
             //VerificaFinalString();
-            VerificarStringIgual();
+            //VerificarStringIgual();
+            VerificaPosicaoDeUmItem();
         }
 
         static void ImplmentandoGuid()
@@ -91,6 +92,16 @@ namespace MyAppStrings
 
             //StringComparison.OrdinalIgnoreCase ignora o case senstive
             Console.WriteLine(texto.Equals("este texto é um teste", StringComparison.OrdinalIgnoreCase));
+        }
+        static void VerificaPosicaoDeUmItem()
+        {
+            var texto = "Este texto é um teste";
+            //IndexOf retorna a posição do valor informado dentro de uma string
+            Console.WriteLine(texto.IndexOf("teste"));
+            Console.WriteLine(texto.IndexOf("é"));
+
+            //LastIndexOf retorna a última ocorrência encontrada
+            Console.WriteLine(texto.LastIndexOf("e"));
         }
     }
 }
