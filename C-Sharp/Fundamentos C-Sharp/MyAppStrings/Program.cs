@@ -7,7 +7,8 @@ namespace MyApp
         static void Main(string[] args)
         {
             //ImplmentandoGuid();
-            ConcatenarStrings();
+            //ConcatenarStrings();
+            CompracaoDeTextos();
         }
 
         static void ImplmentandoGuid()
@@ -42,6 +43,24 @@ namespace MyApp
             //Interpolação
             var text3 = $"O preço do produto é {price} apenas na promoção";
             Console.WriteLine(text3);
+        }
+
+        static void CompracaoDeTextos()
+        {
+            var texto = "Testando";
+
+            //CompareTo compara o valor passado por parametro com a string, por padrão utiliza case sensitive
+            Console.WriteLine(texto.CompareTo("Testando"));
+
+            texto = "Esse texto é teste";
+
+            //Contains verifica se o valor passado por parametro está contigo na string, por padrão utiliza case sensitive
+            Console.WriteLine(texto.Contains("teste"));
+
+            texto = "Esse texto é teste";
+
+            //StringComparison.OrdinalIgnoreCase utilizado para ignorar o case sensitive
+            Console.WriteLine(texto.Contains("TESTE", StringComparison.OrdinalIgnoreCase));
         }
     }
 }
