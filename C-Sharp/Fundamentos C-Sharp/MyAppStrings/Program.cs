@@ -8,7 +8,9 @@ namespace MyApp
         {
             //ImplmentandoGuid();
             //ConcatenarStrings();
-            CompracaoDeTextos();
+            //CompracaoDeTextos();
+            VerificaInicioString();
+            VerificaFinalString();
         }
 
         static void ImplmentandoGuid()
@@ -61,6 +63,24 @@ namespace MyApp
 
             //StringComparison.OrdinalIgnoreCase utilizado para ignorar o case sensitive
             Console.WriteLine(texto.Contains("TESTE", StringComparison.OrdinalIgnoreCase));
+        }
+
+        static void VerificaInicioString()
+        {
+            var texto = "Este texto é um teste";
+            //StartsWith verifica se o valor informado por parametro está no inicio da string, utiliza case sensitive
+            Console.WriteLine(texto.StartsWith("Este"));
+            Console.WriteLine(texto.StartsWith("este"));
+            Console.WriteLine(texto.StartsWith("texto"));
+        }
+
+        static void VerificaFinalString()
+        {
+            var texto = "Este texto é um teste";
+            //EndsWith verifica se o valor informado por parametro está no final da string, utiliza case senstive
+            Console.WriteLine(texto.EndsWith(" Este"));
+            Console.WriteLine(texto.EndsWith("este"));
+            Console.WriteLine(texto.EndsWith("texto"));
         }
     }
 }
