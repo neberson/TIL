@@ -9,8 +9,9 @@ namespace MyAppStrings
             //ImplmentandoGuid();
             //ConcatenarStrings();
             //CompracaoDeTextos();
-            VerificaInicioString();
-            VerificaFinalString();
+            //VerificaInicioString();
+            //VerificaFinalString();
+            VerificarStringIgual();
         }
 
         static void ImplmentandoGuid()
@@ -81,6 +82,15 @@ namespace MyAppStrings
             Console.WriteLine(texto.EndsWith(" Este"));
             Console.WriteLine(texto.EndsWith("este"));
             Console.WriteLine(texto.EndsWith("texto"));
+        }
+        static void VerificarStringIgual()
+        {
+            var texto = "Este texto é um teste";
+            //Equals verificar se o valor passado por parametro é EXATAMENTE igual a string
+            Console.WriteLine(texto.Equals("Este texto é um teste"));
+
+            //StringComparison.OrdinalIgnoreCase ignora o case senstive
+            Console.WriteLine(texto.Equals("este texto é um teste", StringComparison.OrdinalIgnoreCase));
         }
     }
 }
