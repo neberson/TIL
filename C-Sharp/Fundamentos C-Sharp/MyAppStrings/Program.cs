@@ -14,7 +14,7 @@ namespace MyApp
             //Gera sempre um guid único
             var id = Guid.NewGuid();
 
-            //Pode ser realizar a conversão de um tipo Guid para String
+            //Pode-se realizar a conversão de um tipo Guid para String
             id.ToString();
 
             //Instância um objeto do tipo Guid com os valores informados
@@ -22,7 +22,7 @@ namespace MyApp
 
             Console.WriteLine(id);
 
-            //Cria com guid com todas posições zeradas
+            //Cria um guid com todas as posições zeradas
             id = new Guid();
             Console.WriteLine(id);
         }
