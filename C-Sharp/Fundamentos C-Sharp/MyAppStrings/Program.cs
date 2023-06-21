@@ -12,7 +12,8 @@ namespace MyAppStrings
             //VerificaInicioString();
             //VerificaFinalString();
             //VerificarStringIgual();
-            VerificaPosicaoDeUmItem();
+            //VerificaPosicaoDeUmItem();
+            MetodosAdicionais();
         }
 
         static void ImplmentandoGuid()
@@ -102,6 +103,26 @@ namespace MyAppStrings
 
             //LastIndexOf retorna a última ocorrência encontrada
             Console.WriteLine(texto.LastIndexOf("e"));
+        }
+
+        static void MetodosAdicionais()
+        {
+            var texto = "Este texto é um teste";
+
+            //Converter todo o texto para minusculo
+            Console.WriteLine(texto.ToLower());
+
+            //Converter todo o texto para maiusculo
+            Console.WriteLine(texto.ToUpper());
+
+            //Função que vem das listas e é utilizado para inserir valor em uma posição da string
+            Console.WriteLine(texto.Insert(5, "AQUI"));
+
+            //Remove uma quantidade de caracteres a partir de uma posição da string
+            Console.WriteLine(texto.Remove(5, 5));
+
+            //Retorna a quantidade de caractares que tem uma string
+            Console.WriteLine(texto.Length);
         }
     }
 }
