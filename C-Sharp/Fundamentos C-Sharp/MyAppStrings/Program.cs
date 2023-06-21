@@ -13,7 +13,8 @@ namespace MyAppStrings
             //VerificaFinalString();
             //VerificarStringIgual();
             //VerificaPosicaoDeUmItem();
-            MetodosAdicionais();
+            //MetodosAdicionais();
+            ManipulacaoString();
         }
 
         static void ImplmentandoGuid()
@@ -123,6 +124,30 @@ namespace MyAppStrings
 
             //Retorna a quantidade de caractares que tem uma string
             Console.WriteLine(texto.Length);
+        }
+
+        static void ManipulacaoString()
+        {
+            var texto = " Este texto é um teste ";
+            //Percorre a string substituindo das ocorrencias do primeiro valor, pelo segundo valor. 
+            Console.WriteLine(texto.Replace("e", "X"));
+
+            //Utiliza um separador para quebrar a string em vários pedaços menores
+            var divisao = texto.Split(" ");
+
+            Console.WriteLine(divisao[0]);
+            Console.WriteLine(divisao[1]);
+            Console.WriteLine(divisao[2]);
+            Console.WriteLine(divisao[3]);
+            Console.WriteLine(divisao[4]);
+
+            //Retorna uma quantidade de caracteres a partir de uma posição informada
+            var resultado = texto.Substring(5, 5);
+
+            Console.WriteLine(resultado);
+
+            //Remove espaços no inicio e no final de uma string
+            Console.WriteLine(texto.Trim());
         }
     }
 }
