@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace MyAppStrings
 {
@@ -14,7 +15,8 @@ namespace MyAppStrings
             //VerificarStringIgual();
             //VerificaPosicaoDeUmItem();
             //MetodosAdicionais();
-            ManipulacaoString();
+            //ManipulacaoString();
+            EstudoStringBuilder();
         }
 
         static void ImplmentandoGuid()
@@ -148,6 +150,17 @@ namespace MyAppStrings
 
             //Remove espaços no inicio e no final de uma string
             Console.WriteLine(texto.Trim());
+        }
+
+        static void EstudoStringBuilder()
+        {
+            //Utilizado para adicionar informações a uma string, sem criar várias strings na memoria
+            var texto = new StringBuilder();
+
+            //Adiciona valores a um texto, concatenando com o texto atual
+            texto.Append("Este texto é um teste");
+            texto.Append(" é um teste");
+            Console.WriteLine(texto);
         }
     }
 }
