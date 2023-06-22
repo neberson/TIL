@@ -9,7 +9,8 @@ namespace MyAppMoedas
         {
             Console.Clear();
             //TiposParaMoedas();
-            FormatandoMoedas();
+            //FormatandoMoedas();
+            EstudoMath();
         }
 
         static void TiposParaMoedas()
@@ -40,6 +41,17 @@ namespace MyAppMoedas
             Console.WriteLine(valor.ToString(
                 "P", //Formata com sinal de porcentagem
                 CultureInfo.CreateSpecificCulture("pt-BR")));
+        }
+        static void EstudoMath()
+        {
+            decimal valor = 10.25m;
+            Console.WriteLine(valor);
+
+            Console.WriteLine(Math.Round(valor));
+            //Arredondar para cima
+            Console.WriteLine(Math.Ceiling(valor));
+            //Arredondar para baixo
+            Console.WriteLine(Math.Floor(valor));
         }
     }
 }
