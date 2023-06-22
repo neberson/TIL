@@ -12,7 +12,8 @@ namespace MyAppDates
             //AdicionandoValores();
             //CompararDatas();
             //EstudoCultureInfo();
-            EstudoTimeZone();
+            //EstudoTimeZone();
+            TimeSpan();
         }
 
         static void IniciandoDatas()
@@ -124,6 +125,27 @@ namespace MyAppDates
                 Console.WriteLine("______________");
             }
 
+        }
+        static void TimeSpan()
+        {
+            var TimeSpan = new TimeSpan();
+            Console.WriteLine(TimeSpan);
+
+            var timeSpanNanosegundos = new TimeSpan(1);
+            Console.WriteLine(timeSpanNanosegundos);
+
+            var timeSpanHoraMinutoSegundo = new TimeSpan(10, 2, 10);
+            Console.WriteLine(timeSpanHoraMinutoSegundo);
+
+            var timeSpanDiaHoraMinutoSegundo = new TimeSpan(3, 10, 2, 10);
+            Console.WriteLine(timeSpanDiaHoraMinutoSegundo);
+
+            var timeSpanDiaHoraMinutoSegundoMilissegundo = new TimeSpan(3, 10, 2, 10, 150);
+            Console.WriteLine(timeSpanDiaHoraMinutoSegundoMilissegundo);
+
+            Console.WriteLine(timeSpanHoraMinutoSegundo - timeSpanDiaHoraMinutoSegundoMilissegundo);
+            Console.WriteLine(timeSpanDiaHoraMinutoSegundo.Days);
+            Console.WriteLine(timeSpanDiaHoraMinutoSegundo.Add(new TimeSpan(12, 0, 0)));
         }
     }
 }
