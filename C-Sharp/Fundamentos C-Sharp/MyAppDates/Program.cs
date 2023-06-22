@@ -7,7 +7,8 @@ namespace MyAppDates
         static void Main(string[] args)
         {
             //IniciandoDatas();
-            FormatandoDatas();
+            //FormatandoDatas();
+            AdicionandoValores();
         }
 
         static void IniciandoDatas()
@@ -59,6 +60,15 @@ namespace MyAppDates
             //Apenas com um D maiúsculo formata para uma data por extenso
             formatada = String.Format("{0:D}", data);
             Console.WriteLine(formatada);
+        }
+        static void AdicionandoValores()
+        {
+            var data = DateTime.Now;
+            Console.WriteLine(data);
+            Console.WriteLine(data.AddDays(12));
+            Console.WriteLine(data.AddMonths(1));
+            Console.WriteLine(data.AddYears(1));
+
         }
     }
 }
