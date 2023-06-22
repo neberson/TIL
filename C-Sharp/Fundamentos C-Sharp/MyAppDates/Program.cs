@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace MyAppDates
 {
@@ -9,7 +10,8 @@ namespace MyAppDates
             //IniciandoDatas();
             //FormatandoDatas();
             //AdicionandoValores();
-            CompararDatas();
+            //CompararDatas();
+            EstudoCultureInfo();
         }
 
         static void IniciandoDatas()
@@ -87,6 +89,16 @@ namespace MyAppDates
                 Console.WriteLine("É menor");
 
             Console.WriteLine(data);
+        }
+        static void EstudoCultureInfo()
+        {
+            var pt = new CultureInfo("pt-PT");
+            var br = new CultureInfo("pt-BR");
+            var en = new CultureInfo("en-US");
+            var de = new CultureInfo("de-DE");
+            var atual = CultureInfo.CurrentCulture;
+
+            Console.WriteLine(DateTime.Now.ToString("D", en));
         }
     }
 }
