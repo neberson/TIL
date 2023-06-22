@@ -8,7 +8,8 @@ namespace MyAppDates
         {
             //IniciandoDatas();
             //FormatandoDatas();
-            AdicionandoValores();
+            //AdicionandoValores();
+            CompararDatas();
         }
 
         static void IniciandoDatas()
@@ -69,6 +70,23 @@ namespace MyAppDates
             Console.WriteLine(data.AddMonths(1));
             Console.WriteLine(data.AddYears(1));
 
+        }
+        static void CompararDatas()
+        {
+            var data = DateTime.Now;
+
+            //Para comparar datas pode ser utilizado os operadores comuns de comparação para outros tipos struct
+            //obs.: Para datas será comparada toda a estrutura da data
+            if (data.Date == DateTime.Now.Date)
+                Console.WriteLine("É igual");
+
+            if (data.Date > DateTime.Now.Date)
+                Console.WriteLine("É maior");
+
+            if (data.Date < DateTime.Now.Date)
+                Console.WriteLine("É menor");
+
+            Console.WriteLine(data);
         }
     }
 }
