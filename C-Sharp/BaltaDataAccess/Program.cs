@@ -1,4 +1,6 @@
 ﻿using System;
+using BaltaDataAccess.Models;
+using Dapper;
 using Microsoft.Data.SqlClient;
 
 namespace BaltaDataAccess
@@ -8,28 +10,13 @@ namespace BaltaDataAccess
         static void Main(string[] args)
         {
             const string connectionString = "Server=localhost,1433;Database=balta;User ID=SA;Password=1q2w3e4r@#$;TrustServerCertificate=True";
-            // Microsoft.Data.SqlClient
-            //Para baixar um pacote executar: dotnet add package Microsoft.Data.SqlClient
-            /*var connection = new SqlConnection();
-            connection.Open();
 
-            connection.Close();
-            connection.Dispose();*/
             using (var connection = new SqlConnection(connectionString))
             {
-                Console.WriteLine("Conectado");
-                connection.Open();
-                using (var command = new SqlCommand())
+                var categories = connection.Query<Category>("SELECT Id, Title FROM Category");
+                foreach (var category in categories)
                 {
-                    command.Connection = connection;
-                    command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT Id, Title FROM Category";
-
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Console.WriteLine($"{reader.GetGuid(0)} - {reader.GetString(1)}");
-                    }
+                    Console.WriteLine($"{category.Id} - {category.Title}");
                 }
             }
             Console.WriteLine("Hello World!");
