@@ -24,7 +24,8 @@ namespace BaltaDataAccess
                 //ExecuteReadProcedure(connection);
                 //ExecuteScalar(connection);
                 //ReadView(connection);
-                OneToOne(connection);
+                //OneToOne(connection);
+                OneToMany(connection);
             }
         }
 
@@ -237,6 +238,48 @@ namespace BaltaDataAccess
             foreach (var item in items)
             {
                 Console.WriteLine($"{item.Title} - Curso: {item.Course?.Title}");
+            }
+        }
+        static void OneToMany(SqlConnection connection)
+        {
+            var sql = @"SELECT 
+                            [Career].[Id],
+                            [Career].[Title],
+                            [CareerItem].[CareerId],
+                            [CareerItem].[Title]
+                        FROM 
+                            [Career] 
+                        INNER JOIN 
+                            [CareerItem] ON [CareerItem].[CareerId] = [Career].[Id]
+                        ORDER BY [Career].[Id]";
+            var careers = new List<Career>();
+            var items = connection.Query<Career, CareerItem, Career>(sql, (career, careerItem) =>
+            {
+                var car = careers.Where(x => x.id == career.id).FirstOrDefault();
+                if (car == null)
+                {
+                    car = career;
+                    car.CareerItems.Add(careerItem);
+                    careers.Add(car);
+                }
+                else
+                {
+                    car.CareerItems.Add(careerItem);
+                }
+
+                return career;
+            }, splitOn: "CareerId");
+
+            foreach (var career in careers)
+            {
+                Console.WriteLine($"{career.Title}");
+
+                foreach (var item in career.CareerItems)
+                {
+                    Console.WriteLine($"  - {item.Title}");
+
+
+                }
             }
         }
     }
