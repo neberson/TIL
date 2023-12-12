@@ -1,4 +1,5 @@
 ﻿using Blog.Models;
+using BlogDataAccess.Repository;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
@@ -10,24 +11,29 @@ namespace BlogDataAccess
         private const string CONNECTION_STRING = "Server=localhost,1433;Database=Blog;User ID=SA;Password=1q2w3e4r@#$;TrustServerCertificate=True";
         static void Main(string[] args)
         {
-            //ReadUsers();
-            //ReadUser();
-            //CreateUser();
-            //UpdateUser();
-            DeleteUser();
+            var connection = new SqlConnection(CONNECTION_STRING);
+            connection.Open();
+            ReadUsers(connection);
+            ReadRoles(connection);
+            connection.Close();
         }
 
-        public static void ReadUsers()
+        public static void ReadUsers(SqlConnection connection)
         {
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                var users = connection.GetAll<User>();
+            var repository = new UserRepository(connection);
+            var users = repository.Get();
 
-                foreach (var user in users)
-                {
-                    Console.WriteLine(user.Name);
-                }
-            }
+            foreach (var user in users)
+                Console.WriteLine(user.Name);
+        }
+
+        public static void ReadRoles(SqlConnection connection)
+        {
+            var repository = new RoleRepository(connection);
+            var roles = repository.Get();
+
+            foreach (var role in roles)
+                Console.WriteLine(role.Name);
         }
 
         public static void ReadUser()
