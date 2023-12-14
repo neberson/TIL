@@ -15,12 +15,13 @@ namespace BlogDataAccess
             connection.Open();
             ReadUsers(connection);
             ReadRoles(connection);
+            ReadTags(connection);
             connection.Close();
         }
 
         public static void ReadUsers(SqlConnection connection)
         {
-            var repository = new UserRepository(connection);
+            var repository = new Repository<User>(connection);
             var users = repository.Get();
 
             foreach (var user in users)
@@ -29,23 +30,30 @@ namespace BlogDataAccess
 
         public static void ReadRoles(SqlConnection connection)
         {
-            var repository = new RoleRepository(connection);
+            var repository = new Repository<Role>(connection);
             var roles = repository.Get();
 
             foreach (var role in roles)
                 Console.WriteLine(role.Name);
         }
 
-        public static void ReadUser()
+        public static void ReadTags(SqlConnection connection)
         {
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                var user = connection.Get<User>(1);
-                Console.WriteLine(user.Name);
-            }
+            var repository = new Repository<Tag>(connection);
+            var itens = repository.Get();
+
+            foreach (var item in itens)
+                Console.WriteLine(item.Name);
         }
 
-        public static void CreateUser()
+        public static void ReadUser(SqlConnection connection)
+        {
+            var repository = new Repository<User>(connection);
+            var user = repository.Get(1);
+            Console.WriteLine(user.Name);
+        }
+
+        public static void CreateUser(SqlConnection connection)
         {
             var user = new User()
             {
@@ -57,14 +65,11 @@ namespace BlogDataAccess
                 Slug = "equipe-balta"
             };
 
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                connection.Insert<User>(user);
-                Console.WriteLine("Cadastro realizado com sucesso");
-            }
+            var repository = new Repository<User>(connection);
+            repository.Create(user);
         }
 
-        public static void UpdateUser()
+        public static void UpdateUser(SqlConnection connection)
         {
             var user = new User()
             {
@@ -77,22 +82,15 @@ namespace BlogDataAccess
                 Slug = "equipe-balta"
             };
 
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                connection.Update<User>(user);
-                Console.WriteLine("Atualização realizada com sucesso");
-            }
+            var repository = new Repository<User>(connection);
+            repository.Update(user);
         }
 
-        public static void DeleteUser()
+        public static void DeleteUser(SqlConnection connection)
         {
-
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                var user = connection.Get<User>(4);
-                connection.Delete<User>(user);
-                Console.WriteLine("Usuário deletado com sucesso");
-            }
+            var repository = new Repository<User>(connection);
+            var user = repository.Get(4);
+            repository.Delete(user);
         }
     }
 }
